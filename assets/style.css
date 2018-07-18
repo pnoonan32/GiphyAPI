@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+#heading {
+    padding-bottom: 50px;
+}
+
+#searchField {
+    padding-bottom: 50px;
+}
+
+#searchText {
+    border-radius: 2px rounded;
+    margin: 0 100px;
+}
+
+#submitButton {
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
