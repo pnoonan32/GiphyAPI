@@ -19,17 +19,20 @@ function getData() {
       $("#giphyContent").append("<img src='" + giphyimages[i].images.original.url + "' style='height:300px; width:300px; 'class=mx-auto>")
     }
 
-    searchAgain();
-
   });
-
 
 }
 
 
 function searchAgain() {
-  $("#seachGifs").get();
+  $("#seachGifs").click(function() {
+    window.location.href = $.get("http://api.giphy.com/v1/gifs/search?q="+input+"&api_key=dc6zaTOxFJmzC"); 
+ });
+
 }
+
+getData();
+
 
 
 
