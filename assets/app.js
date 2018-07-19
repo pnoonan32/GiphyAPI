@@ -19,7 +19,7 @@
 function getData() {
   var input = $("#searchText").val()
   console.log(input);
-  var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+input+"&api_key=dc6zaTOxFJmzC&limit=15");
+  var xhr = $.get("https://api.giphy.com/v1/gifs/search?q="+input+"&api_key=dc6zaTOxFJmzC&limit=15");
   xhr.done(function (response) {
     console.log("success got data", response);
     var giphyimages = response.data
