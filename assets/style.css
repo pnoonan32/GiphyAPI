@@ -37,3 +37,26 @@ button.btn.btn-secondary {
 #giphyContent {
     margin-bottom: 40px;
 }
+
+
+
+button#addCategoryButton.btn.btn-primary.btn-lg {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#categoryHeading {
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+
+#userCategories {
+    margin: 45px;
+}
+
+#userCategoriesHeading {
+    margin: 15px;
+    overflow: hidden;
+
+}

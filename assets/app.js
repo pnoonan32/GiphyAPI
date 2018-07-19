@@ -6,6 +6,15 @@
 // var testURL = "http://api.giphy.com/v1/gifs/search?q=jason+williams&api_key=dc6zaTOxFJmzC"
 
 
+// improvising to do list: 
+
+// 1: create a slide down message for every time an event occurs
+
+
+
+
+
+//////////////////////////////////////////////////////////////
 // Code to retrieve the user's desired search inputs //
 function getData() {
   var input = $("#searchText").val()
@@ -25,9 +34,9 @@ function getData() {
 
 }
 // Code to retrieve the user's desired search inputs //
+//////////////////////////////////////////////////////////////////
 
 
-//  Code for predefined buttons  //
 // The predefined buttons are all 30 teams in the NBA
 var predefinedButtons = [
 "Atlanta Hawks", 
@@ -65,30 +74,98 @@ console.log(predefinedButtons);
 
 var $nbaTeams;
 
+///////////////////////////////////////////////////////////////////
+// To append all 30 NBA teams as buttons on the screen //
 var nbaButtons = function nbaGiphy() {
-for ( i in predefinedButtons ) {
-  $nbaTeams = $("<button class='btn btn-secondary' 'onclick='getNBAGiphy()''>").text(predefinedButtons[i]);
-  $("#nbaTags").append($nbaTeams);
+  for ( i in predefinedButtons ) {
+    $nbaTeams = createButton(predefinedButtons[i])
+    $("#nbaTags").append($nbaTeams);
+  }
 }
+// To append all 30 NBA teams as buttons on the screen //
 
+
+
+// The function for creating all buttons dynamically //
+function createButton(text){
+  return $('<button data-value="' + text + '" class="btn btn-secondary team-select">')
+  .text(text);
 }
+// The function for creating all buttons dynamically //
+
 nbaButtons();
+//////////////////////////////////////////////////////////////////////
 
-function getNBAGiphy() {
-var nbaSearchGifs;
-  nbaSearchGifs.addEventListener('click', function() {
-    nbaSearchGifs = $(".btn btn-secondary").val();
+
+
+
+///////////////////////////////////////////////////////////////////////
+// After the category is created (Lines 121-131),  when the user clicks the created category button this will retrieve the data on it  //
+$('.team-select').on('click', getNBAGiphy)
+// After the category is created, when the user clicks the created category button this will retrieve the data on it //
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+// The code where the preDefined buttons images are retrieved for whichever button is clicked  //
+
+function getNBAGiphy(event) { 
+   var nbaSearchGifs = $(this).data('value');
+   console.log({nbaSearchGifs});
     xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+nbaSearchGifs+"&api_key=dc6zaTOxFJmzC&limit=15");
     xhr.done(function (response) {
       console.log("success got data", response);
        nbaTeamData = response.data
-       $("#giphyContent").html(""); 
-  console.log(nbaSearchGifs);
+       $("#giphyContent").html("");
+       for (i in nbaTeamData) {
+         $("#giphyContent").append("<img src='" + nbaTeamData[i].images.original.url + "' style='height:300px; width:300px; 'class=mx-auto>")
+       }
+  
   })
-});
+};
 
-}
-getNBAGiphy();
+// The code where the preDefined buttons images are retrieved for whichever button is clicked  //
+/////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+// where the categories are created and rendered to the screen by the user //
+
+$('#addCategory button').on('click', function(event){
+  var text = $('#addCategory input').val()
+  console.log({text})
+  if(text.length === 0){
+    return;
+  }
+  $category = createButton(text)
+  predefinedButtons.push(text);
+  $("#userCategories").append($category);
+  $category.on('click', getNBAGiphy)
+})
+
+// where the categories are created and rendered to the screen by the user //
+//////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+// *irrelevant to project, ignore text below this line (158)
+
+
 
 
 
@@ -117,17 +194,10 @@ getNBAGiphy();
 
 // });
 
-
-
-
-
-
-
-
 // Add the team logos next to the buttons??
 
 
-// Make sure to research pagination api
+// Make sure to research pagination api?
 
 
 // function searchAgain() {

@@ -11,6 +11,7 @@
 <body>
 
 <h1 id="heading" class="mx-auto text-center display-4">Giphy API</h1>
+<p class="mx-auto text-center">*To view the search results scroll down until you see the Giphy IMages</p>
 
 
 <!-- Search field  -->
@@ -29,6 +30,29 @@
 <!-- List of Buttons that contain a category of Giphys to select from -->
 <div id="nbaTags" class="mx-auto"></div>
 <!-- List of Buttons that contain a category of Giphys to select from /-->
+
+
+<!-- Where the User's created cateogories will appear -->
+<h1 id="userCategoriesHeading" class="mx-auto text-center">Your Categories:</h1>
+<div id="userCategories" class="mx-auto text-center"></div>
+<!-- Where the User's created cateogories will appear /-->
+
+
+<h1 id="categoryHeading" class="mx-auto text-center display-4">Add your own categories</h1>
+<p class="mx-auto text-center">*Note that the categories you add will appear in the exact way you type them! (CaSeSensitive) </p>
+<p class="mx-auto text-center">Click the category you just added and see what happens</p>
+<!-- Section where the user can add a category to the preDefined list -->
+<div id="addCategory" class="mx-auto text-center">
+    <div id="textArea" class="mx-auto text-center">
+        <input id="searchText" type="text" placeholder="Add your own category!">
+    </div>
+    
+    <div id="Addcategory">
+        <button class="btn btn-primary btn-lg" id="addCategoryButton" class="mx-auto text-center" type="submit">Add Category</button>
+    </div>
+    </div>
+ <!-- Section where the user can add a category to the preDefined list /-->
+
 
 
 <!-- The container for the images that are added dynamically -->
