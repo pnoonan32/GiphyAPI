@@ -20,4 +20,20 @@
 #submitButton {
     padding-top: 10px;
     padding-bottom: 50px;
+    margin-top: 5px;
+}
+
+/*  NBA Predefined Buttons for each team */
+button.btn.btn-secondary {
+    padding: 10px;
+    margin: 10px;
+}
+/*  NBA Predefined Buttons for each team */
+
+#nbaTags {
+    padding-bottom: 50px;
+}
+
+#giphyContent {
+    margin-bottom: 40px;
 }

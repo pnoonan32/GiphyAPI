@@ -13,29 +13,27 @@
 <h1 id="heading" class="mx-auto text-center display-4">Giphy API</h1>
 
 
+<!-- Search field  -->
 <div id="searchField" class="mx-auto text-center">
 <div id="textArea" class="mx-auto text-center">
     <input id="searchText" type="text" placeholder="Search..">
 </div>
 
-<!-- List of Buttons that contain a category of Giphys to select from -->
-
-<div id="predefinedSearch" class="mx-auto">
-
+<div id="submitButton">
+    <button class="btn btn-primary btn-lg" id="searchGifs" class="mx-auto text-center" type="submit" onclick="getData()">Search!</button>
 </div>
+</div>
+<!-- Search field  /-->
 
 
+<!-- List of Buttons that contain a category of Giphys to select from -->
+<div id="nbaTags" class="mx-auto"></div>
 <!-- List of Buttons that contain a category of Giphys to select from /-->
 
 
-
-<div id="submitButton">
-    <button class="btn btn-primary" id="searchGifs" class="mx-auto text-center" type="submit" onclick="getData()">Search!</button>
-</div>
-</div>
-
+<!-- The container for the images that are added dynamically -->
 <div id="giphyContent" class="mx-auto text-center"></div>
-
+<!-- The container for the images that are added dynamically /-->
 
 
 
