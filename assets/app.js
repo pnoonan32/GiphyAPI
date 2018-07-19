@@ -115,7 +115,7 @@ $('.team-select').on('click', getNBAGiphy)
 function getNBAGiphy(event) { 
    var nbaSearchGifs = $(this).data('value');
    console.log({nbaSearchGifs});
-    xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+nbaSearchGifs+"&api_key=dc6zaTOxFJmzC&limit=15");
+    xhr = $.get("https://api.giphy.com/v1/gifs/search?q="+nbaSearchGifs+"&api_key=dc6zaTOxFJmzC&limit=15");
     xhr.done(function (response) {
       console.log("success got data", response);
        nbaTeamData = response.data
