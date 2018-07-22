@@ -6,27 +6,84 @@
 // var testURL = "http://api.giphy.com/v1/gifs/search?q=jason+williams&api_key=dc6zaTOxFJmzC"
 
 
-// improvising to do list: 
-
-// 1: create a slide down message for every time an event occurs
 
 
+// Flash Message features for when any button is clicked //
+$("#flashMessage").text("View your selected Gifs at the bottom of the page!");
+$("#flashMessage").hide();
+
+function showFlashMessage() {
+$("#flashMessage")
+.fadeIn(1000)
+.delay(3000)
+.fadeOut(1000);
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+// Flash Message features for when any button is clicked //
+///////////////////////////////////////////////////////////////////////
 
 
 
-//////////////////////////////////////////////////////////////
+// Dynamically adding giphy images //
+function imageState(gifs) {
+ var imageTag = $("<img>");
+ imageTag.attr( "src",  gifs[i].images.original.url );
+ imageTag.addClass("mx-auto text-center");
+ imageTag.attr("style", "width: 300px; height: 300px");
+ imageTag.attr("id", "play-pause");
+ imageTag.attr('data-animate', gifs[i].images.original.url );
+ imageTag.attr('data-still', gifs[i].images.original_still.url );
+ imageTag.attr('data-state', 'animate');
+
+
+ $("#giphyContent").prepend(imageTag);
+}
+
+
+// Dynamically adding giphy images //
+// var pauseGif  = data.images.original.url;
+// var playGif =  data.images.original_still.url;
+
+
+$("#play-pause").on('click', function() {
+  if ( $(this)  === Image.dataset.animate  ) {
+      $(this) === 
+  } 
+  // else if ( "data-state" == "data-still" ) {
+  //   "data-state" == "data-animate";
+  // }
+});
+
+// To pause & play gifs on click //
+// function gifState (gifs) {
+
+
+
+
+
+
+
+// To pause & play gifs on click //
+
+
+
+
+
 // Code to retrieve the user's desired search inputs //
+$("#searchGifs").on("click", getData);
 function getData() {
   var input = $("#searchText").val()
   console.log(input);
   var xhr = $.get("https://api.giphy.com/v1/gifs/search?q="+input+"&api_key=dc6zaTOxFJmzC&limit=15");
-  xhr.done(function (response) {
+  xhr.then(function (response) {
     console.log("success got data", response);
     var giphyimages = response.data
-
     $("#giphyContent").html(""); 
     for (i in giphyimages) {
-      $("#giphyContent").append("<img src='" + giphyimages[i].images.original.url + "' style='height:300px; width:300px; 'class=mx-auto>")
+      imageState(giphyimages)
+
+      // $("#giphyContent").append("<img src='" + giphyimages[i].images.original.url + "' style='height:300px; width:300px; 'class=mx-auto data-attr>")
     }
 
 
@@ -34,10 +91,13 @@ function getData() {
 
 }
 // Code to retrieve the user's desired search inputs //
-//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 
-// The predefined buttons are all 30 teams in the NBA
+
+
+
+// The predefined buttons are all 30 teams in the NBA //
 var predefinedButtons = [
 "Atlanta Hawks", 
 "Boston Celtics", 
@@ -74,15 +134,21 @@ console.log(predefinedButtons);
 
 var $nbaTeams;
 
-///////////////////////////////////////////////////////////////////
+// The predefined buttons are all 30 teams in the NBA //
+
+
+
+
 // To append all 30 NBA teams as buttons on the screen //
-var nbaButtons = function nbaGiphy() {
+function nbaButtons() {
   for ( i in predefinedButtons ) {
     $nbaTeams = createButton(predefinedButtons[i])
     $("#nbaTags").append($nbaTeams);
   }
 }
 // To append all 30 NBA teams as buttons on the screen //
+
+
 
 
 
@@ -94,22 +160,20 @@ function createButton(text){
 // The function for creating all buttons dynamically //
 
 nbaButtons();
-//////////////////////////////////////////////////////////////////////
 
 
 
 
-///////////////////////////////////////////////////////////////////////
 // After the category is created (Lines 121-131),  when the user clicks the created category button this will retrieve the data on it  //
 $('.team-select').on('click', getNBAGiphy)
 // After the category is created, when the user clicks the created category button this will retrieve the data on it //
-/////////////////////////////////////////////////////////////////////
 
 
 
 
 
-/////////////////////////////////////////////////////////////////////
+
+
 // The code where the preDefined buttons images are retrieved for whichever button is clicked  //
 
 function getNBAGiphy(event) { 
@@ -121,12 +185,11 @@ function getNBAGiphy(event) {
        nbaTeamData = response.data
        $("#giphyContent").html("");
        for (i in nbaTeamData) {
-         $("#giphyContent").append("<img src='" + nbaTeamData[i].images.original.url + "' style='height:300px; width:300px; 'class=mx-auto>")
+       imageState(nbaTeamData);
        }
   
   })
 };
-
 // The code where the preDefined buttons images are retrieved for whichever button is clicked  //
 /////////////////////////////////////////////////////////////////
 
@@ -135,7 +198,6 @@ function getNBAGiphy(event) {
 
 
 
-/////////////////////////////////////////////////////////////////
 // where the categories are created and rendered to the screen by the user //
 
 $('#addCategory button').on('click', function(event){
@@ -164,9 +226,6 @@ $('#addCategory button').on('click', function(event){
 
 
 // *irrelevant to project, ignore text below this line (158)
-
-
-
 
 
 // if ( nbaButtons().val() ) {

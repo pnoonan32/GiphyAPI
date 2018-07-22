@@ -10,8 +10,13 @@
 </head>
 <body>
 
+    <!-- Message for when user requests gifs images or creates a button category -->
+    <div id="flashMessage">
+    </div>
+        <!-- Message for when user requests gifs images or creates a button category -->
+
+
 <h1 id="heading" class="mx-auto text-center display-4">Giphy API</h1>
-<p class="mx-auto text-center">*To view the search results scroll down until you see the Giphy IMages</p>
 
 
 <!-- Search field  -->
@@ -21,14 +26,14 @@
 </div>
 
 <div id="submitButton">
-    <button class="btn btn-primary btn-lg" id="searchGifs" class="mx-auto text-center" type="submit" onclick="getData()">Search!</button>
-</div>
+    <button class="btn btn-primary btn-lg" id="searchGifs" class="mx-auto text-center" type="submit" onclick="showFlashMessage()" >Search!</button>
+</div> 
 </div>
 <!-- Search field  /-->
-
+<!-- onclick="getData()" -->
 
 <!-- List of Buttons that contain a category of Giphys to select from -->
-<div id="nbaTags" class="mx-auto"></div>
+<div id="nbaTags" class="mx-auto" onclick="showFlashMessage()"></div>
 <!-- List of Buttons that contain a category of Giphys to select from /-->
 
 
@@ -48,7 +53,7 @@
     </div>
     
     <div id="Addcategory">
-        <button class="btn btn-primary btn-lg" id="addCategoryButton" class="mx-auto text-center" type="submit">Add Category</button>
+        <button class="btn btn-primary btn-lg" id="addCategoryButton" class="mx-auto text-center" type="submit" onclick="showFlashMessage()">Add Category</button>
     </div>
     </div>
  <!-- Section where the user can add a category to the preDefined list /-->
